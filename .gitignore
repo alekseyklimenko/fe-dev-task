@@ -1,5 +1,13 @@
+node_modules
+dist
+.vite
+coverage
+.DS_Store
+*.log
+
 CLAUDE.md
 .env
 .claude/
 .docs/
 .idea/
+.omc/
