@@ -25,7 +25,7 @@ export function useLessons(weekStart: string) {
   return useQuery({
     queryKey: ['lessons', { weekStart }],
     queryFn: () => fetchLessons(weekStart),
-    staleTime: 60_000,
+    staleTime: 5 * 60_000,
   });
 }
 
