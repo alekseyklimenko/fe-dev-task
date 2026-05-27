@@ -8,145 +8,149 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as StudentsRouteImport } from './routes/students'
-import { Route as InstructorsRouteImport } from './routes/instructors'
-import { Route as BookRouteImport } from './routes/book'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as StudentsStudentIdRouteImport } from './routes/students.$studentId'
+import {Route as rootRouteImport} from './routes/__root'
+import {Route as StudentsRouteImport} from './routes/students'
+import {Route as InstructorsRouteImport} from './routes/instructors'
+import {Route as BookRouteImport} from './routes/book'
+import {Route as IndexRouteImport} from './routes/index'
+import {Route as StudentsStudentIdRouteImport} from './routes/students.$studentId'
 
 const StudentsRoute = StudentsRouteImport.update({
-  id: '/students',
-  path: '/students',
-  getParentRoute: () => rootRouteImport,
+    id: '/students',
+    path: '/students',
+    getParentRoute: () => rootRouteImport,
 } as any)
 const InstructorsRoute = InstructorsRouteImport.update({
-  id: '/instructors',
-  path: '/instructors',
-  getParentRoute: () => rootRouteImport,
+    id: '/instructors',
+    path: '/instructors',
+    getParentRoute: () => rootRouteImport,
 } as any)
 const BookRoute = BookRouteImport.update({
-  id: '/book',
-  path: '/book',
-  getParentRoute: () => rootRouteImport,
+    id: '/book',
+    path: '/book',
+    getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
+    id: '/',
+    path: '/',
+    getParentRoute: () => rootRouteImport,
 } as any)
 const StudentsStudentIdRoute = StudentsStudentIdRouteImport.update({
-  id: '/$studentId',
-  path: '/$studentId',
-  getParentRoute: () => StudentsRoute,
+    id: '/$studentId',
+    path: '/$studentId',
+    getParentRoute: () => StudentsRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/book': typeof BookRoute
-  '/instructors': typeof InstructorsRoute
-  '/students': typeof StudentsRouteWithChildren
-  '/students/$studentId': typeof StudentsStudentIdRoute
+    '/': typeof IndexRoute
+    '/book': typeof BookRoute
+    '/instructors': typeof InstructorsRoute
+    '/students': typeof StudentsRouteWithChildren
+    '/students/$studentId': typeof StudentsStudentIdRoute
 }
+
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/book': typeof BookRoute
-  '/instructors': typeof InstructorsRoute
-  '/students': typeof StudentsRouteWithChildren
-  '/students/$studentId': typeof StudentsStudentIdRoute
+    '/': typeof IndexRoute
+    '/book': typeof BookRoute
+    '/instructors': typeof InstructorsRoute
+    '/students': typeof StudentsRouteWithChildren
+    '/students/$studentId': typeof StudentsStudentIdRoute
 }
+
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/book': typeof BookRoute
-  '/instructors': typeof InstructorsRoute
-  '/students': typeof StudentsRouteWithChildren
-  '/students/$studentId': typeof StudentsStudentIdRoute
+    __root__: typeof rootRouteImport
+    '/': typeof IndexRoute
+    '/book': typeof BookRoute
+    '/instructors': typeof InstructorsRoute
+    '/students': typeof StudentsRouteWithChildren
+    '/students/$studentId': typeof StudentsStudentIdRoute
 }
+
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/book'
-    | '/instructors'
-    | '/students'
-    | '/students/$studentId'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book' | '/instructors' | '/students' | '/students/$studentId'
-  id:
-    | '__root__'
-    | '/'
-    | '/book'
-    | '/instructors'
-    | '/students'
-    | '/students/$studentId'
-  fileRoutesById: FileRoutesById
+    fileRoutesByFullPath: FileRoutesByFullPath
+    fullPaths:
+        | '/'
+        | '/book'
+        | '/instructors'
+        | '/students'
+        | '/students/$studentId'
+    fileRoutesByTo: FileRoutesByTo
+    to: '/' | '/book' | '/instructors' | '/students' | '/students/$studentId'
+    id:
+        | '__root__'
+        | '/'
+        | '/book'
+        | '/instructors'
+        | '/students'
+        | '/students/$studentId'
+    fileRoutesById: FileRoutesById
 }
+
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  BookRoute: typeof BookRoute
-  InstructorsRoute: typeof InstructorsRoute
-  StudentsRoute: typeof StudentsRouteWithChildren
+    IndexRoute: typeof IndexRoute
+    BookRoute: typeof BookRoute
+    InstructorsRoute: typeof InstructorsRoute
+    StudentsRoute: typeof StudentsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/students': {
-      id: '/students'
-      path: '/students'
-      fullPath: '/students'
-      preLoaderRoute: typeof StudentsRouteImport
-      parentRoute: typeof rootRouteImport
+    interface FileRoutesByPath {
+        '/students': {
+            id: '/students'
+            path: '/students'
+            fullPath: '/students'
+            preLoaderRoute: typeof StudentsRouteImport
+            parentRoute: typeof rootRouteImport
+        }
+        '/instructors': {
+            id: '/instructors'
+            path: '/instructors'
+            fullPath: '/instructors'
+            preLoaderRoute: typeof InstructorsRouteImport
+            parentRoute: typeof rootRouteImport
+        }
+        '/book': {
+            id: '/book'
+            path: '/book'
+            fullPath: '/book'
+            preLoaderRoute: typeof BookRouteImport
+            parentRoute: typeof rootRouteImport
+        }
+        '/': {
+            id: '/'
+            path: '/'
+            fullPath: '/'
+            preLoaderRoute: typeof IndexRouteImport
+            parentRoute: typeof rootRouteImport
+        }
+        '/students/$studentId': {
+            id: '/students/$studentId'
+            path: '/$studentId'
+            fullPath: '/students/$studentId'
+            preLoaderRoute: typeof StudentsStudentIdRouteImport
+            parentRoute: typeof StudentsRoute
+        }
     }
-    '/instructors': {
-      id: '/instructors'
-      path: '/instructors'
-      fullPath: '/instructors'
-      preLoaderRoute: typeof InstructorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/book': {
-      id: '/book'
-      path: '/book'
-      fullPath: '/book'
-      preLoaderRoute: typeof BookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/students/$studentId': {
-      id: '/students/$studentId'
-      path: '/$studentId'
-      fullPath: '/students/$studentId'
-      preLoaderRoute: typeof StudentsStudentIdRouteImport
-      parentRoute: typeof StudentsRoute
-    }
-  }
 }
 
 interface StudentsRouteChildren {
-  StudentsStudentIdRoute: typeof StudentsStudentIdRoute
+    StudentsStudentIdRoute: typeof StudentsStudentIdRoute
 }
 
 const StudentsRouteChildren: StudentsRouteChildren = {
-  StudentsStudentIdRoute: StudentsStudentIdRoute,
+    StudentsStudentIdRoute: StudentsStudentIdRoute,
 }
 
 const StudentsRouteWithChildren = StudentsRoute._addFileChildren(
-  StudentsRouteChildren,
+    StudentsRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  BookRoute: BookRoute,
-  InstructorsRoute: InstructorsRoute,
-  StudentsRoute: StudentsRouteWithChildren,
+    IndexRoute: IndexRoute,
+    BookRoute: BookRoute,
+    InstructorsRoute: InstructorsRoute,
+    StudentsRoute: StudentsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+    ._addFileChildren(rootRouteChildren)
+    ._addFileTypes<FileRouteTypes>()
