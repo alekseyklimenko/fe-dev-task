@@ -1,6 +1,6 @@
 import {Button} from '@/components/ui/button';
 import {Select} from '@/components/ui/select';
-import type {Instructor} from '@/schemas/instructor';
+import type {InstructorOption} from '@/schemas/instructor';
 
 type LessonsFilters = {
     instructorIds: string[];
@@ -17,7 +17,7 @@ type Props = {
     resetFilters: () => void;
     sortBy: SortBy;
     setSortBy: (s: SortBy) => void;
-    instructors: Instructor[];
+    instructors: InstructorOption[];
 };
 
 export function FiltersBar({

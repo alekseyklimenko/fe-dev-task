@@ -4,7 +4,7 @@ import {createFileRoute} from '@tanstack/react-router';
 import {PageContainer} from '@/components/layout/PageContainer';
 import {Skeleton} from '@/components/ui/skeleton';
 import {useStudent} from '@/hooks/useStudents';
-import {useInstructors} from '@/hooks/useInstructors';
+import {useInstructorOptions} from '@/hooks/useInstructors';
 import {useLessonsView} from '@/hooks/useLessons';
 import {startOfWeek, formatWeekStart, formatTime} from '@/lib/date';
 
@@ -21,7 +21,7 @@ const STAGE_LABEL: Record<string, string> = {
 function StudentDetailPage() {
     const {studentId} = Route.useParams();
     const {data: student, isLoading, error} = useStudent(studentId);
-    const {data: instructors = []} = useInstructors();
+    const {data: instructors = []} = useInstructorOptions();
 
     const weekStartStr = formatWeekStart(startOfWeek(new Date()));
     const view = useLessonsView(weekStartStr);

@@ -5,7 +5,7 @@ import {PageContainer} from '@/components/layout/PageContainer';
 import {Skeleton} from '@/components/ui/skeleton';
 import {BookingForm} from '@/components/booking/BookingForm';
 import {useStudents} from '@/hooks/useStudents';
-import {useInstructors} from '@/hooks/useInstructors';
+import {useInstructorOptions} from '@/hooks/useInstructors';
 
 export const Route = createFileRoute('/book')({
     component: BookPage,
@@ -14,7 +14,7 @@ export const Route = createFileRoute('/book')({
 function BookPage() {
     const navigate = useNavigate();
     const {data: students, isLoading: studentsLoading} = useStudents();
-    const {data: instructors, isLoading: instructorsLoading} = useInstructors();
+    const {data: instructors, isLoading: instructorsLoading} = useInstructorOptions();
 
     const isLoading = studentsLoading || instructorsLoading;
 

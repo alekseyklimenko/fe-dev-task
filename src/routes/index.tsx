@@ -9,7 +9,7 @@ import {Skeleton} from '@/components/ui/skeleton';
 import {Button} from '@/components/ui/button';
 import {useLessonsView} from '@/hooks/useLessons';
 import {useStudents} from '@/hooks/useStudents';
-import {useInstructors} from '@/hooks/useInstructors';
+import {useInstructorOptions} from '@/hooks/useInstructors';
 import {startOfWeek, formatWeekStart} from '@/lib/date';
 
 const searchSchema = z.object({
@@ -34,7 +34,7 @@ function CalendarPage() {
 
     const view = useLessonsView(weekStartStr);
     const {data: students = []} = useStudents();
-    const {data: instructors = []} = useInstructors();
+    const {data: instructors = []} = useInstructorOptions();
 
     const studentName = (id: string) =>
         students.find((s) => s.id === id)?.fullName ?? 'Unknown';

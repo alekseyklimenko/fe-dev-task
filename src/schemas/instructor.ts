@@ -17,4 +17,10 @@ export const InstructorSchema = z.object({
 
 export const InstructorListSchema = z.array(InstructorSchema);
 
+export const InstructorOptionSchema = InstructorSchema.pick({id: true, fullName: true});
+
+export const InstructorOptionListSchema = z.array(InstructorOptionSchema);
+
 export type Instructor = z.infer<typeof InstructorSchema>;
+
+export type InstructorOption = z.infer<typeof InstructorOptionSchema>;

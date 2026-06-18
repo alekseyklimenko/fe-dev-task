@@ -26,7 +26,11 @@ declare module '@tanstack/react-router' {
 const rootEl = document.getElementById('root');
 if (!rootEl) throw new Error('Root element not found');
 
-ReactDOM.createRoot(rootEl).render(
+ReactDOM.createRoot(rootEl, {
+    // Route-level errorComponents already render a fallback for caught errors;
+    // don't duplicate them as console noise.
+    onCaughtError: () => {},
+}).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
             <RouterProvider router={router}/>
