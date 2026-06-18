@@ -16,19 +16,19 @@ A small scheduling app for driving instructors. Manage students, view a weekly c
 ## Getting Started
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-`npm run dev` starts both the Vite dev server (http://localhost:5173) and the mock API (http://localhost:3001) concurrently.
+`pnpm dev` starts both the Vite dev server (http://localhost:5173) and the mock API (http://localhost:3001) concurrently.
 
 Other scripts:
 
 ```bash
-npm test           # run unit tests
-npm run typecheck  # tsc --noEmit
-npm run build      # production build
-npm run lint       # eslint
+pnpm test           # run unit tests
+pnpm typecheck      # tsc --noEmit
+pnpm build          # production build
+pnpm lint           # eslint
 ```
 
 ## Project Structure

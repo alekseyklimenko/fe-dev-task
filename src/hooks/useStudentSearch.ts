@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import type {Student} from '@/schemas/student';
 import {searchStudents} from '@/api/students';
 
@@ -6,7 +6,6 @@ export function useStudentSearch() {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<Student[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
         if (query.length === 0) {
@@ -16,17 +15,10 @@ export function useStudentSearch() {
         }
 
         setIsLoading(true);
-        if (timerRef.current) clearTimeout(timerRef.current);
-
-        timerRef.current = setTimeout(async () => {
-            const data = await searchStudents(query);
+        searchStudents(query).then((data) => {
             setResults(data);
             setIsLoading(false);
-        }, 300);
-
-        return () => {
-            if (timerRef.current) clearTimeout(timerRef.current);
-        };
+        });
     }, [query]);
 
     return {query, setQuery, results, isLoading};
